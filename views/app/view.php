@@ -9,14 +9,20 @@ use yii\widgets\DetailView;
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Apps', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
+// 
+$updateText = Yii::$app->identity->isAdmin() ? "Сменить статус" : "Оставить отзыв"
+// 
 ?>
 <div class="app-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <!--  -->
+        <?php if(Yii:$app->user->identity->isAdmin() || $model->status == "Завершено") : ?>
+        <!--  -->
+            <?= Html::a('$updateText', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?php endif ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -25,6 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+
+
 
     <?= DetailView::widget([
         'model' => $model,

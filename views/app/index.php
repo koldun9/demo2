@@ -10,7 +10,9 @@ use yii\grid\GridView;
 /** @var app\models\AppSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Apps';
+// $this->title = 'Apps'; удалить
+$this->title = Yii::$app->user->identity->isAdmin()
+    ? 'Панель управления: заявки' : "Мои заявки"; //написать
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="app-index">
@@ -18,7 +20,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create App', ['create'], ['class' => 'btn btn-success']) ?>
+    <?php if (!Yii::$app->user->isGuest && !Yii::$app->user->identity->isAdmin()) : ?> <!-- написать -->
+        <?= Html::a('Новая заявка', ['create'], ['class' => 'btn btn-success']) ?>
+    <?php endif ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

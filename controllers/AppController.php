@@ -8,6 +8,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use app\models\room; // !ДОБАВИТЬ ИНАЧЕ СОЗДАНИЕ ЗАЯВКИ НЕ БУДЕТ РАБОТАТЬ
+
+
 /**
  * AppController implements the CRUD actions for app model.
  */
@@ -98,6 +101,10 @@ class AppController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            // 
+            'rooms' => $this->getRooms(),
+            'paymentOptions' => $this->getPaymentOptions(),
+            // 
         ]);
     }
 
@@ -118,6 +125,10 @@ class AppController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            // 
+            'rooms' => $this->getRooms(),
+            'paymentOptions' => $this->getPaymentOptions(),
+            // 
         ]);
     }
 
@@ -160,4 +171,18 @@ class AppController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.'); 
     }
+
+    // PKGH
+    private function getRooms() {
+        $rooms = room::find()->orderBy('name')->all();
+        return \yii\helpers\ArrayHelper::map($rooms, 'id', 'name');
+    }
+
+    private function getPaymentOptions() {
+        return [
+            'При очном посещении' => 'При очном посещении',
+            'Переводом по системе СБП' => 'Переводом по системе СБП',
+        ];
+    }
+    // PKGH
 }
