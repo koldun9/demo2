@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\app;
@@ -55,7 +56,7 @@ class AppSearch extends app
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             // настраиваем пагинацию
-            'pagination' => ['pageSize' => 6];
+            'pagination' => ['pageSize' => 6],
             //
         ]);
 

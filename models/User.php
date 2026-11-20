@@ -63,11 +63,11 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
-            'password' => 'Password',
-            'full_name' => 'Full Name',
-            'phone' => 'Phone',
-            'email' => 'Email',
+            'username' => 'Логин',
+            'password' => 'Пароль',
+            'full_name' => 'ФИО',
+            'phone' => 'Телефон',
+            'email' => 'Адрес электронной почты',
             'admin' => 'Admin',
         ];
     }
@@ -149,5 +149,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
         return static::findOne(['username' => $username]); //скопировала строчку из функции findIdentityByAccessToken
     }
+
+    public function isAdmin() { 
+        return (bool) $this->admin; 
+    }
+
 
 }

@@ -56,12 +56,12 @@ class app extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
-            'room_id' => 'Room ID',
-            'start' => 'Start',
-            'payment' => 'Payment',
-            'status' => 'Status',
-            'feedback' => 'Feedback',
+            'user_id' => 'ID пользователя',
+            'room_id' => 'Помещение',
+            'start' => 'Дата начала конференции',
+            'payment' => 'Способ оплаты',
+            'status' => 'Статус',
+            'feedback' => 'Отзыв',
         ];
     }
 

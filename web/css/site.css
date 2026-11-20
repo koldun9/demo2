@@ -1,3 +1,13 @@
+/* PKGH */
+@font-face {
+    font-family: "RubikBubbles-Regular";
+    src: url("/fonts/RubikBubbles-Regular.ttf");
+}
+.logo {
+    font-family: "RubikBubbles-Regular";
+    color: #0066ff;
+}
+/* PKGH */
 main > .container {
     padding: 70px 15px 20px;
 }
