@@ -44,7 +44,7 @@ class app extends \yii\db\ActiveRecord
             [['start'], 'safe'],
             [['payment', 'status', 'feedback'], 'string'],
             [['user_id', 'room_id'], 'unique', 'targetAttribute' => ['user_id', 'room_id']],
-            [['room_id'], 'exist', 'skipOnError' => true, 'targetClass' => Room::class, 'targetAttribute' => ['room_id' => 'id']],
+            [['room_id'], 'exist', 'skipOnError' => true, 'targetClass' => room::class, 'targetAttribute' => ['room_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -72,7 +72,7 @@ class app extends \yii\db\ActiveRecord
      */
     public function getRoom()
     {
-        return $this->hasOne(Room::class, ['id' => 'room_id']);
+        return $this->hasOne(room::class, ['id' => 'room_id']);
     }
 
     /**

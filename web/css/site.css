@@ -1,4 +1,5 @@
 /* PKGH */
+/* Логотип */
 @font-face {
     font-family: "RubikBubbles-Regular";
     src: url("/fonts/RubikBubbles-Regular.ttf");
@@ -7,6 +8,22 @@
     font-family: "RubikBubbles-Regular";
     color: #0066ff;
 }
+
+/* Карточки */
+.app-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid #707070;
+    border-radius: 8px;
+}
+.app-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
+}
+.app-card .card-title {
+    color:#064c97;
+    font-weight: 600;
+}
+
 /* PKGH */
 main > .container {
     padding: 70px 15px 20px;
